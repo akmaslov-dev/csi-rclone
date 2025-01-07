@@ -12,8 +12,8 @@ csiControllerRclone:
     imagePullPolicy: IfNotPresent
   rclone:
     image:
-      repository: csi-rclone
-      tag: "latest"
+      repository: ghcr.io/akmaslov-dev/csi-rclone
+      tag: "v0.3.6"
     imagePullPolicy: IfNotPresent
     resources:
       {}
@@ -41,8 +41,8 @@ csiNodepluginRclone:
           - SYS_ADMIN
       privileged: true
     image:
-      repository: csi-rclone
-      tag: "latest"
+      repository: ghcr.io/akmaslov-dev/csi-rclone
+      tag: "v0.3.6"
     imagePullPolicy: IfNotPresent
     resources:
       {}

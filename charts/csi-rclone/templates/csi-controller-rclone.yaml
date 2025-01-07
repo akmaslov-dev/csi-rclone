@@ -16,6 +16,7 @@ spec:
       labels:
         app: csi-controller-rclone
     spec:
+      priorityClassName: system-node-critical
       serviceAccountName: {{ include "chart.fullname" . }}-controller
       containers:
       - name: csi-attacher

@@ -1,7 +1,30 @@
+# Fork features
+
+1. `linux/arm64` support.
+2. Publicly accessible container images.
+3. OCI-based registry support for Helm Chart.
+4. Small fixes and adjustments.
 
 # CSI rclone mount plugin
 
 This project implements Container Storage Interface (CSI) plugin that allows using [rclone mount](https://rclone.org/) as storage backend. Rclone mount points and [parameters](https://rclone.org/commands/rclone_mount/) can be configured using Secret or PersistentVolume volumeAttibutes. 
+
+## Installation
+
+You can install the CSI plugin via Helm. Please checkout the default values file at `charts/csi-rclone/values.yaml`
+in this repository for the possible options on how to configure the installation.
+
+```bash
+helm repo add csi-rclone https://akmaslov-dev.github.io/csi-rclone/
+helm repo update
+helm install csi-rclone csi-rclone/csi-rclone
+```
+
+Also you can install Helm Chart directly from OCI-based registry.
+
+```bash
+helm install rclone-csi oci://ghcr.io/akmaslov-dev/charts/csi-rclone --version 0.3.6
+```
 
 ## Usage
 
@@ -97,45 +120,4 @@ spec:
   # to the selected volume.
   storageClassName: ""
   volumeName: "csi-rclone-pv-example"
-```
-
-## Installation
-
-You can install the CSI plugin via Helm. Please checkout the default values file at `deploy/csi-rclone/values.yaml`
-in this repository for the possible options on how to configure the installation.
-
-```bash
-helm repo add renku https://swissdatasciencecenter.github.io/helm-charts
-helm repo update
-helm install csi-rclone renku/csi-rclone
-```
-
-## Changelog
-
-See [CHANGELOG.txt](CHANGELOG.txt)
-
-## Dev Environment
-This repo uses `nix` for the dev environment. Alternatively, run `nix develop` to enter a dev shell.
-
-Ensure that `nix`, `direnv` and `nix-direnv` are installed.
-Also add the following to your nix.conf:
-```
-experimental-features = nix-command flakes
-```
-then commands can be run like e.g. `nix run '.#initKind'`. Check `flakes.nix` 
-for all available commands.
-
-To deploy the test cluster and run tests, run 
-```bash
-$ nix run '.#initKind'
-$ nix run '.#getKubeconfig'
-$ nix run '.#deployToKind'
-$ go test -v ./...
-```
-in your shell, or if you're in a nix shell, run
-```bash
-$ init-kind-cluster
-$ get-kind-kubeconfig
-$ local-deploy
-$ go test -v ./...
 ```

@@ -16,6 +16,7 @@ spec:
         app: csi-nodeplugin-rclone
       {{- include "chart.selectorLabels" . | nindent 8 }}
     spec:
+      priorityClassName: system-node-critical
       serviceAccountName: {{ include "chart.fullname" . }}-nodeplugin
       dnsPolicy: ClusterFirstWithHostNet
       containers:
