@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  csi-rclone:
+  - apiVersion: v2
+    appVersion: 0.3.6
+    created: "2025-01-07T13:58:21.033065166Z"
+    description: A Helm chart for the Rclone CSI
+    digest: 9c32b4423fa09a41a498384550aaea4275b3f8747194d8c92c014150e271e868
+    name: csi-rclone
+    type: application
+    urls:
+    - https://akmaslov-dev.github.io/csi-rclone/csi-rclone-0.3.6.tgz
+    version: 0.3.6
+generated: "2025-01-07T13:58:21.032232986Z"
