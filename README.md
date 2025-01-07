@@ -23,7 +23,7 @@ helm install csi-rclone csi-rclone/csi-rclone
 Also you can install Helm Chart directly from OCI-based registry.
 
 ```bash
-helm install rclone-csi oci://ghcr.io/akmaslov-dev/charts/csi-rclone --version 0.3.6
+helm install csi-rclone oci://ghcr.io/akmaslov-dev/charts/csi-rclone --version 0.3.6
 ```
 
 ## Usage
